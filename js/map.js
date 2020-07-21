@@ -1,5 +1,9 @@
 'use strict';
 
+//объявление тэмплэйта пина
+let pinTemplate = document.querySelector('.map__card');
+console.log(pinTemplate);
+
 //функция случайной перестановки элементов
 let getRandomPermutation = (arr) => {
   let n = arr.length;
@@ -144,9 +148,20 @@ function dataBuilder() {
     dataObject.checkouts = checkoutsArray[i];
     dataObject.features = featuresArray[i];
     dataObject.photos = photosArray[i];
+    dataObject.x = 1;
+    dataObject.y = 1;
     dataMassive.push(dataObject);
   }
   return dataMassive;
 }
 
 console.log(dataBuilder());
+
+//временный костыль удаления класса
+let map = document.querySelector('.map');
+map.classList.remove('map--faded');
+
+//функция создания ДОМ-пин элемента
+function createPin(dataObj) {
+  // pinTemplate.style.left = dataObj.
+}
