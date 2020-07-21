@@ -1,7 +1,7 @@
 'use strict';
 
 //объявление тэмплэйта пина
-let pinTemplate = document.querySelector('.map__card');
+let pinTemplate = document.querySelector('#map__card');
 console.log(pinTemplate);
 
 //функция случайной перестановки элементов
@@ -136,20 +136,24 @@ function dataBuilder() {
   let featuresArray = featuresGenerator();
   let photosArray = picturesGenerator();
   for (let i = 0; i < 8; i++) {
-    let dataObject = {};
-    dataObject.avatar = avatarsArray[i];
-    dataObject.title = titlesArray[i];
-    dataObject.address = addressesArray[i];
-    dataObject.price = pricesArray[i];
-    dataObject.type = typesArray[i];
-    dataObject.rooms = roomsArray[i];
-    dataObject.guests = guestsArray[i];
-    dataObject.checkins = checkinsArray[i];
-    dataObject.checkouts = checkoutsArray[i];
-    dataObject.features = featuresArray[i];
-    dataObject.photos = photosArray[i];
-    dataObject.x = 1;
-    dataObject.y = 1;
+    let dataObject = {
+      author: {},
+      offer: {},
+      location: {}
+    };
+    dataObject.author.avatar = avatarsArray[i];
+    dataObject.offer.title = titlesArray[i];
+    dataObject.offer.address = addressesArray[i];
+    dataObject.offer.price = pricesArray[i];
+    dataObject.offer.type = typesArray[i];
+    dataObject.offer.rooms = roomsArray[i];
+    dataObject.offer.guests = guestsArray[i];
+    dataObject.offer.checkins = checkinsArray[i];
+    dataObject.offer.checkouts = checkoutsArray[i];
+    dataObject.offer.features = featuresArray[i];
+    dataObject.offer.photos = photosArray[i];
+    dataObject.location.x = addressesArray[i].toString().split(', ')[0];
+    dataObject.location.y = addressesArray[i].toString().split(', ')[1];
     dataMassive.push(dataObject);
   }
   return dataMassive;
@@ -163,5 +167,8 @@ map.classList.remove('map--faded');
 
 //функция создания ДОМ-пин элемента
 function createPin(dataObj) {
-  // pinTemplate.style.left = dataObj.
+  let pinElement = pinTemplate.cloneNode(true);
+
+  pinTemplate.style.left = dataObj.location.x + 'px';
+  pinTemplate.style.top = dataObj.location.y + 'px';
 }
