@@ -160,7 +160,6 @@ function dataBuilder() {
   return dataMassive;
 }
 
-console.log(dataBuilder());
 
 //временный костыль удаления класса
 let map = document.querySelector('.map');
@@ -169,15 +168,19 @@ map.classList.remove('map--faded');
 //функция создания ДОМ-пин элемента
 function createPin(dataObj) {
   let pinElement = pinTemplate.cloneNode(true);
-
+  let pinElementImg = pinElement.querySelector('img');
   pinElement.style.left = dataObj.location.x + 'px';
   pinElement.style.top = dataObj.location.y + 'px';
-  pinElement.src = dataObj.author.avatar;
+  pinElementImg.src = dataObj.author.avatar;
   pinElement.alt = dataObj.offer.title;
-  console.log(pinElement.src);
   mapPins.appendChild(pinElement);
 }
 
-let dataResult = dataBuilder();
-createPin(dataResult[3]);
-createPin(dataResult[4]);
+
+(function displayPins(){
+  let dataResult = dataBuilder();
+
+  for(let i = 0; i<8; i++){
+    createPin(dataResult[i]);
+  };
+}())
