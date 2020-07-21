@@ -1,8 +1,9 @@
 'use strict';
 
-//объявление тэмплэйта пина
-let pinTemplate = document.querySelector('#map__card');
-console.log(pinTemplate);
+//объявление тэмплэйтов
+let mapCardTemplate = document.querySelector('#map__card-template');
+let pinTemplate = mapCardTemplate.content.querySelector('.map__pin');
+let mapPins = document.querySelector('.map__pins');
 
 //функция случайной перестановки элементов
 let getRandomPermutation = (arr) => {
@@ -31,7 +32,7 @@ function randomInteger(min, max) {
 function avatarGenerator() {
   let avatarsArray = [];
   for (let i = 1; i <= 8; i++) {
-    avatarsArray.push('0' + i)
+    avatarsArray.push('/img/avatars/user' + '0' + i + '.png')
   }
 
   return getRandomPermutation(avatarsArray);
@@ -169,6 +170,14 @@ map.classList.remove('map--faded');
 function createPin(dataObj) {
   let pinElement = pinTemplate.cloneNode(true);
 
-  pinTemplate.style.left = dataObj.location.x + 'px';
-  pinTemplate.style.top = dataObj.location.y + 'px';
+  pinElement.style.left = dataObj.location.x + 'px';
+  pinElement.style.top = dataObj.location.y + 'px';
+  pinElement.src = dataObj.author.avatar;
+  pinElement.alt = dataObj.offer.title;
+  console.log(pinElement.src);
+  mapPins.appendChild(pinElement);
 }
+
+let dataResult = dataBuilder();
+createPin(dataResult[3]);
+createPin(dataResult[4]);
