@@ -159,7 +159,8 @@ function dataBuilder() {
   }
   return dataMassive;
 }
-
+//занесение результатов в переменную
+let dataResult = dataBuilder();
 
 //временный костыль удаления класса
 let map = document.querySelector('.map');
@@ -176,11 +177,17 @@ function createPin(dataObj) {
   mapPins.appendChild(pinElement);
 }
 
+//самовызывающаяся функция отрисовки пинов
+(function displayPins() {
 
-(function displayPins(){
-  let dataResult = dataBuilder();
-
-  for(let i = 0; i<8; i++){
+  for (let i = 0; i < 8; i++) {
     createPin(dataResult[i]);
   };
-}())
+}());
+
+function createCard(dataObj) {
+  let mapCardAd = mapCardTemplate.content.querySelector('.map__card');
+  console.log(mapCardAd);
+}
+
+createCard(dataResult[1]);
