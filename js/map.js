@@ -56,7 +56,7 @@ function addressGenerator() {
 function priceGenerator() {
   let pricesArray = [];
   for (let i = 0; i < 8; i++) {
-    pricesArray.push(Math.round(randomInteger(1000, 20000)/10000*10000));
+    pricesArray.push(Math.round(randomInteger(1000, 20000) / 10000 * 10000));
   }
   return pricesArray;
 }
@@ -186,8 +186,9 @@ function createPin(dataObj) {
   };
 }());
 
-function typeTranslator(obj){
-  switch(obj){
+//функция перевода значений массива в типы жилищ
+function typeTranslator(obj) {
+  switch (obj) {
     case 'flat':
       return 'Квартира'
       break
@@ -203,14 +204,15 @@ function typeTranslator(obj){
   }
 }
 
+
 function createCard(dataObj) {
   let mapCardAd = mapCardTemplate.content.querySelector('.map__card');
   mapCardAd.querySelector('.popup__title').textContent = dataObj.offer.title;
   mapCardAd.querySelector('.popup__text--address').textContent = dataObj.offer.address;
   mapCardAd.querySelector('.popup__text--price').textContent = dataObj.offer.price + '₽/ночь';
   mapCardAd.querySelector('.popup__type').textContent = typeTranslator(dataObj.offer.type);
-  mapCardAd.querySelector('.popup__text--capacity').textContent = dataObj.offer.rooms + ' комнаты для '+dataObj.offer.guests+' гостей';
-  mapCardAd.querySelector('.popup__text--time').textContent = 'Заезд после '+dataObj.offer.checkin+', выезд до '+dataObj.offer.checkout;
+  mapCardAd.querySelector('.popup__text--capacity').textContent = dataObj.offer.rooms + ' комнаты для ' + dataObj.offer.guests + ' гостей';
+  mapCardAd.querySelector('.popup__text--time').textContent = 'Заезд после ' + dataObj.offer.checkin + ', выезд до ' + dataObj.offer.checkout;
   mapCardAd.querySelector('.popup__features').textContent = dataObj.offer.features;
   mapCardAd.querySelector('.popup__description').textContent = dataObj.offer.description;
   mapCardAd.querySelector('.popup__pictures').querySelector('img').src = dataObj.offer.photos;
