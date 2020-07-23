@@ -203,7 +203,7 @@ function typeTranslator(obj) {
       break
   }
 }
-
+//функция преобразования features в блоки с классами
 let featuresAppender = function (array) {
   let fragment = document.createDocumentFragment();
   array.forEach(function (elem) {
@@ -214,7 +214,7 @@ let featuresAppender = function (array) {
   });
   return fragment;
 };
-
+//функция создания карточки объявления
 function createCard(dataObj) {
   let mapCardAd = mapCardTemplate.content.querySelector('.map__card');
   mapCardAd.querySelector('.popup__title').textContent = dataObj.offer.title;
