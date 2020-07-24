@@ -163,10 +163,6 @@ function dataBuilder() {
 //занесение результатов в переменную
 let dataResult = dataBuilder();
 
-//временный костыль удаления класса
-let map = document.querySelector('.map');
-map.classList.remove('map--faded');
-
 //функция создания ДОМ-пин элемента
 function createPin(dataObj) {
   let pinElement = pinTemplate.cloneNode(true);
@@ -177,14 +173,6 @@ function createPin(dataObj) {
   pinElement.alt = dataObj.offer.title;
   mapPins.appendChild(pinElement);
 }
-
-//самовызывающаяся функция отрисовки пинов
-(function displayPins() {
-
-  for (let i = 0; i < 8; i++) {
-    createPin(dataResult[i]);
-  };
-}());
 
 //функция перевода значений массива в типы жилищ
 function typeTranslator(obj) {
@@ -231,5 +219,3 @@ function createCard(dataObj) {
 
   mapFiltersContainer.before(mapCardAd);
 }
-
-createCard(dataResult[1]);
