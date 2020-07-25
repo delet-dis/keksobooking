@@ -29,15 +29,15 @@ function getPinCoords() {
   const PIN_X_COORD = getCoords(mapPinMain).left;
   const PIN_Y_COORD = getCoords(mapPinMain).top;
 
-  return{
+  return {
     pinX: Math.floor(PIN_X_COORD - MAP_X_COORD + MAP_PIN_WIDTH / 2),
     pinY: Math.floor(PIN_Y_COORD - MAP_Y_COORD + MAP_PIN_HEIGHT)
   };
 }
 
 //функция заполнения адреса в зависимости от положения метки
-function inputAddressFiller(){
-  addressForm.value = getPinCoords().pinX.toString()+ ', ' + getPinCoords().pinY.toString();
+function inputAddressFiller() {
+  addressForm.value = getPinCoords().pinX.toString() + ', ' + getPinCoords().pinY.toString();
   console.log(addressForm.value);
 }
 //дефолтные действия
