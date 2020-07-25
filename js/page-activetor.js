@@ -39,6 +39,14 @@ function getPinCoords() {
 function inputAddressFiller() {
   addressForm.value = getPinCoords().pinX.toString() + ', ' + getPinCoords().pinY.toString();
 }
+
+//функция отрисовки пинов
+function displayPins() {
+  for (let i = 0; i < numberOfAds; i++) {
+    createPin(dataResult[i]);
+  }
+}
+
 //дефолтные действия
 formFieldsets.forEach(element => element.disabled = true);
 inputAddressFiller();
@@ -48,4 +56,5 @@ mapPinMain.addEventListener('mouseup', function (evt) {
   map.classList.remove('map--faded');
   formFieldsets.forEach(element => element.disabled = false);
   inputAddressFiller();
+  displayPins();
 })

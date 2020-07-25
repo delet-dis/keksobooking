@@ -5,6 +5,9 @@ let mapCardTemplate = document.querySelector('#map__card-template');
 let pinTemplate = mapCardTemplate.content.querySelector('.map__pin');
 let mapPins = document.querySelector('.map__pins');
 let mapFiltersContainer = document.querySelector('.map__filters-container');
+
+let numberOfAds = 8;
+
 //функция случайной перестановки элементов
 let getRandomPermutation = (arr) => {
   let n = arr.length;
@@ -31,7 +34,7 @@ function randomInteger(min, max) {
 
 function avatarGenerator() {
   let avatarsArray = [];
-  for (let i = 1; i <= 8; i++) {
+  for (let i = 1; i <= numberOfAds; i++) {
     avatarsArray.push('img/avatars/user' + '0' + i + '.png')
   }
 
@@ -47,7 +50,7 @@ function addressGenerator() {
   let map = document.querySelector('.map__pinsoverlay');
   let mapWidth = map.offsetWidth;
   let addressArray = [];
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < numberOfAds; i++) {
     addressArray.push(randomInteger(0, mapWidth).toString() + ', ' + randomInteger(130, 630).toString());
   }
   return addressArray;
@@ -55,7 +58,7 @@ function addressGenerator() {
 
 function priceGenerator() {
   let pricesArray = [];
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < numberOfAds; i++) {
     pricesArray.push(Math.round(randomInteger(1000, 20000) / 1000000 * 1000000));
   }
   return pricesArray;
@@ -64,7 +67,7 @@ function priceGenerator() {
 function typeGenerator() {
   let typesArray = [];
   let types = ['palace', 'flat', 'house', 'bungalo'];
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < numberOfAds; i++) {
     typesArray.push(arrayRandElement(types));
   }
   return typesArray;
@@ -72,7 +75,7 @@ function typeGenerator() {
 
 function roomNumberGenerator() {
   let roomsNumbersArray = [];
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < numberOfAds; i++) {
     roomsNumbersArray.push(randomInteger(2, 4));
   }
   return roomsNumbersArray;
@@ -80,7 +83,7 @@ function roomNumberGenerator() {
 
 function guestsNumberGenerator() {
   let guestNumbersArray = [];
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < numberOfAds; i++) {
     guestNumbersArray.push(randomInteger(3, 15));
   }
   return guestNumbersArray;
@@ -89,7 +92,7 @@ function guestsNumberGenerator() {
 function checkinTimeGenerator() {
   let checkinsArray = [];
   let checkins = ['12:00', '13:00', '14:00'];
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < numberOfAds; i++) {
     checkinsArray.push(arrayRandElement(checkins));
   }
   return checkinsArray;
@@ -98,7 +101,7 @@ function checkinTimeGenerator() {
 function checkoutTimeGenerator() {
   let checkoutsArray = [];
   let checkouts = ['12:00', '13:00', '14:00'];
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < numberOfAds; i++) {
     checkoutsArray.push(arrayRandElement(checkouts));
   }
   return checkoutsArray;
@@ -107,7 +110,7 @@ function checkoutTimeGenerator() {
 function featuresGenerator() {
   let featuresArray = [];
   let features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < numberOfAds; i++) {
     featuresArray[i] = arrayRandElement(features);
   }
   return featuresArray;
@@ -116,7 +119,7 @@ function featuresGenerator() {
 function picturesGenerator() {
   let picturesArray = [];
   let pictures = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < numberOfAds; i++) {
     picturesArray.push(arrayRandElement(pictures));
   }
   return picturesArray;
@@ -136,7 +139,7 @@ function dataBuilder() {
   let checkoutsArray = checkoutTimeGenerator();
   let featuresArray = featuresGenerator();
   let photosArray = picturesGenerator();
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < numberOfAds; i++) {
     let dataObject = {
       author: {},
       offer: {},
@@ -162,7 +165,7 @@ function dataBuilder() {
 }
 //занесение результатов в переменную
 let dataResult = dataBuilder();
-
+console.log(dataResult);
 //функция создания ДОМ-пин элемента
 function createPin(dataObj) {
   let pinElement = pinTemplate.cloneNode(true);
