@@ -38,7 +38,6 @@ function getPinCoords() {
 //функция заполнения адреса в зависимости от положения метки
 function inputAddressFiller() {
   addressForm.value = getPinCoords().pinX.toString() + ', ' + getPinCoords().pinY.toString();
-  console.log(addressForm.value);
 }
 //дефолтные действия
 formFieldsets.forEach(element => element.disabled = true);
