@@ -165,7 +165,7 @@ function dataBuilder() {
 }
 //занесение результатов в переменную
 let dataResult = dataBuilder();
-console.log(dataResult);
+
 //функция создания ДОМ-пин элемента
 function createPin(dataObj) {
   let pinElement = pinTemplate.cloneNode(true);
