@@ -48,14 +48,14 @@ function displayPins() {
   }
   const pins = document.querySelectorAll('.map__pin');
   const cards = document.querySelectorAll('.map__card');
-  for(let i = 1; i< pins.length; i++){
-    pins[i].addEventListener('click', function(){
-      cards.forEach((item)=>{
+  for (let i = 1; i < pins.length; i++) {
+    pins[i].addEventListener('click', function () {
+      cards.forEach((item) => {
         item.classList.add('hidden');
       })
-      cards[i-1].classList.remove('hidden');
+      cards[i - 1].classList.remove('hidden');
     })
-}
+  }
 }
 
 //дефолтные действия
@@ -69,5 +69,3 @@ mapPinMain.addEventListener('mouseup', function (evt) {
   inputAddressFiller();
   displayPins();
 });
-
-

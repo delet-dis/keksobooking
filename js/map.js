@@ -5,7 +5,7 @@ const mapCardTemplate = document.querySelector('#map__card-template'),
   pinTemplate = mapCardTemplate.content.querySelector('.map__pin'),
   mapPins = document.querySelector('.map__pins'),
   mapFiltersContainer = document.querySelector('.map__filters-container');
-  
+
 let numberOfAds = 8;
 
 //функция случайной перестановки элементов
