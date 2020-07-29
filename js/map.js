@@ -1,10 +1,10 @@
 'use strict';
 
 //объявление тэмплэйтов
-let mapCardTemplate = document.querySelector('#map__card-template');
-let pinTemplate = mapCardTemplate.content.querySelector('.map__pin');
-let mapPins = document.querySelector('.map__pins');
-let mapFiltersContainer = document.querySelector('.map__filters-container');
+const mapCardTemplate = document.querySelector('#map__card-template'),
+  pinTemplate = mapCardTemplate.content.querySelector('.map__pin'),
+  mapPins = document.querySelector('.map__pins'),
+  mapFiltersContainer = document.querySelector('.map__filters-container');
 
 let numberOfAds = 8;
 

@@ -4,8 +4,8 @@
 const mapPinMain = document.querySelector('.map__pin--main'),
   formFieldsets = document.querySelectorAll('fieldset'),
   map = document.querySelector('.map'),
-  addressForm = document.querySelector('input[name=address]');
-
+  addressForm = document.querySelector('input[name=address]'),
+  pins = document.querySelectorAll('.map__pin');
 //константы
 
 //функция получения координат элемента относительно документа
@@ -45,6 +45,13 @@ function displayPins() {
   for (let i = 0; i < numberOfAds; i++) {
     createPin(dataResult[i]);
   }
+  const pins = document.querySelectorAll('.map__pin');
+  for(let i = 1; i< pins.length; i++){
+    console.log(i)
+    pins[i].addEventListener('click', function(){
+      createCard(dataResult[i-1]);
+    })
+}
 }
 
 //дефолтные действия
@@ -57,4 +64,6 @@ mapPinMain.addEventListener('mouseup', function (evt) {
   formFieldsets.forEach(element => element.disabled = false);
   inputAddressFiller();
   displayPins();
-})
+});
+
+
