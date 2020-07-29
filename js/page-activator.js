@@ -44,12 +44,16 @@ function inputAddressFiller() {
 function displayPins() {
   for (let i = 0; i < numberOfAds; i++) {
     createPin(dataResult[i]);
+    createCard(dataResult[i]);
   }
   const pins = document.querySelectorAll('.map__pin');
+  const cards = document.querySelectorAll('.map__card');
   for(let i = 1; i< pins.length; i++){
-    console.log(i)
     pins[i].addEventListener('click', function(){
-      createCard(dataResult[i-1]);
+      cards.forEach((item)=>{
+        item.classList.add('hidden');
+      })
+      cards[i-1].classList.remove('hidden');
     })
 }
 }

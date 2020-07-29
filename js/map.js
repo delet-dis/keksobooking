@@ -5,7 +5,7 @@ const mapCardTemplate = document.querySelector('#map__card-template'),
   pinTemplate = mapCardTemplate.content.querySelector('.map__pin'),
   mapPins = document.querySelector('.map__pins'),
   mapFiltersContainer = document.querySelector('.map__filters-container');
-
+  
 let numberOfAds = 8;
 
 //функция случайной перестановки элементов
@@ -207,7 +207,7 @@ let featuresAppender = function (array) {
 };
 //функция создания карточки объявления
 function createCard(dataObj) {
-  let mapCardAd = mapCardTemplate.content.querySelector('.map__card');
+  let mapCardAd = mapCardTemplate.content.querySelector('.map__card').cloneNode(true);
   mapCardAd.querySelector('.popup__title').textContent = dataObj.offer.title;
   mapCardAd.querySelector('.popup__text--address').textContent = dataObj.offer.address;
   mapCardAd.querySelector('.popup__text--price').textContent = dataObj.offer.price + '₽/ночь';
@@ -221,4 +221,5 @@ function createCard(dataObj) {
   mapCardAd.querySelector('.popup__avatar').src = dataObj.author.avatar;
 
   mapFiltersContainer.before(mapCardAd);
+  mapCardAd.classList.add('hidden');
 }
