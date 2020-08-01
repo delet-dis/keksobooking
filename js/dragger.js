@@ -22,8 +22,19 @@ mapPinMain.addEventListener('mousedown', (evt) => {
       y: moveEvt.clientY
     };
 
-    mapPinMain.style.top = (mapPinMain.offsetTop - shift.y) + 'px';
-    mapPinMain.style.left = (mapPinMain.offsetLeft - shift.x) + 'px';
+    let styleChange = {
+      top: mapPinMain.offsetTop - shift.y,
+      left: mapPinMain.offsetLeft - shift.x
+    };
+
+    if (styleChange.left > 0 &&
+      styleChange.left < 1200 &&
+      styleChange.top > 110 &&
+      styleChange.top < 660) {
+      mapPinMain.style.top = styleChange.top + 'px';
+      mapPinMain.style.left = styleChange.left + 'px';
+    };
+
   };
 
   //функция отписки от обработчика события
