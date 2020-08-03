@@ -164,11 +164,11 @@
     }
     return dataMassive;
   }
-  //занесение результатов в переменную
-  window.dataResult = dataBuilder();
+  // //занесение результатов в переменную
+  // window.dataResult = dataBuilder();
 
   //функция создания ДОМ-пин элемента
-  window.createPin = function(dataObj) {
+  window.createPin = function (dataObj) {
     let pinElement = pinTemplate.cloneNode(true);
     let pinElementImg = pinElement.querySelector('img');
     pinElement.style.left = dataObj.location.x + 'px';
@@ -196,7 +196,8 @@
     }
   }
   //функция преобразования features в блоки с классами
-  let featuresAppender = function (array) {
+  let featuresAppender = function (arrayNonSorted) {
+    let array = arrayNonSorted[0];
     let fragment = document.createDocumentFragment();
     array.forEach(function (elem) {
       let container = document.createElement('li');
@@ -204,10 +205,21 @@
       container.classList.add('feature--' + elem);
       fragment.appendChild(container);
     });
+
+    return fragment;
+  };
+  //функция преобразования images в блоки
+  let imagesAppender = function (array) {
+    let fragment = document.createDocumentFragment();
+    array.forEach(function (elem) {
+      let image = document.createElement('img');
+      image.src = elem;
+      fragment.appendChild(image);
+    });
     return fragment;
   };
   //функция создания карточки объявления
-  window.createCard = function(dataObj) {
+  window.createCard = function (dataObj) {
     let mapCardAd = mapCardTemplate.content.querySelector('.map__card').cloneNode(true);
     mapCardAd.querySelector('.popup__title').textContent = dataObj.offer.title;
     mapCardAd.querySelector('.popup__text--address').textContent = dataObj.offer.address;
@@ -218,11 +230,15 @@
     mapCardAd.querySelector('.popup__features').innerHTML = '';
     mapCardAd.querySelector('.popup__features').appendChild(featuresAppender([dataObj.offer.features]));
     mapCardAd.querySelector('.popup__description').textContent = dataObj.offer.description;
-    mapCardAd.querySelector('.popup__pictures').querySelector('img').src = dataObj.offer.photos;
+    mapCardAd.querySelector('.popup__pictures').querySelector('li').innerHTML = '';
+    mapCardAd.querySelector('.popup__pictures').querySelector('li').appendChild(imagesAppender(dataObj.offer.photos));
     mapCardAd.querySelector('.popup__avatar').src = dataObj.author.avatar;
 
     mapFiltersContainer.before(mapCardAd);
     mapCardAd.classList.add('hidden');
   }
 
+  window.backend.load(function (ads) {
+    window.dataResult = ads;
+  })
 })()
