@@ -1,8 +1,8 @@
 'use strict';
 (function () {
   //объявление переменных
-    window.mapPinMain = document.querySelector('.map__pin--main');
-    const formFieldsets = document.querySelectorAll('fieldset'),
+  window.mapPinMain = document.querySelector('.map__pin--main');
+  const formFieldsets = document.querySelectorAll('fieldset'),
     map = document.querySelector('.map'),
     addressForm = document.querySelector('input[name=address]'),
     pins = document.querySelectorAll('.map__pin');
@@ -56,7 +56,18 @@
         cards[i - 1].classList.remove('hidden');
       })
     }
+    //функция закрытия модалок
+    cards.forEach((item) => {
+      item.addEventListener('click', function (evt) {
+        const target = evt.target;
+        if (target.closest('.popup__close')) {
+          item.classList.add('hidden');
+        }
+      });
+    });
   }
+
+
 
   //дефолтные действия
   formFieldsets.forEach(element => element.disabled = true);
@@ -65,6 +76,7 @@
   //слушатель перемещения метки
   mapPinMain.addEventListener('mouseup', function (evt) {
     map.classList.remove('map--faded');
+    document.querySelector('.notice__form').classList.remove('notice__form--disabled');
     formFieldsets.forEach(element => element.disabled = false);
     inputAddressFiller();
     displayPins();
