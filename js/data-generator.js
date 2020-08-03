@@ -240,5 +240,5 @@
 
   window.backend.load(function (ads) {
     window.dataResult = ads;
-  })
+  });
 })()
