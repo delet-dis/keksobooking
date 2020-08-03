@@ -63,7 +63,7 @@
         if (target.closest('.popup__close')) {
           item.classList.add('hidden');
         }
-      })
+      });
     });
   }
 
@@ -76,6 +76,7 @@
   //слушатель перемещения метки
   mapPinMain.addEventListener('mouseup', function (evt) {
     map.classList.remove('map--faded');
+    document.querySelector('.notice__form').classList.remove('notice__form--disabled');
     formFieldsets.forEach(element => element.disabled = false);
     inputAddressFiller();
     displayPins();
