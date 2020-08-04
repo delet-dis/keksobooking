@@ -42,11 +42,17 @@
     errorHandler: function (errorMessage) {
       let node = document.createElement('div');
       node.classList.add('error-message');
-      node.textContent = errorMessage;
-
+      node.textContent = '';
+      for (let i = 0; i < errorMessage.length; i++) {
+        node.innerText += errorMessage[i].fieldName + ' ' + errorMessage[i].errorMessage + ', ';
+      }
+      node.textContent = node.textContent.replace(/^( *, *)+|(, *(?=,|$))+/g, '');
       if (!errorMessage) {
         node.textContent = 'Произошла ошибка';
       };
+      setTimeout(() => {
+        document.querySelector('.error-message').remove()
+      }, 4000);
       document.body.insertAdjacentElement('afterbegin', node);
     }
   };
