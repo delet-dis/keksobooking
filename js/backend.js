@@ -50,6 +50,9 @@
       if (!errorMessage) {
         node.textContent = 'Произошла ошибка';
       };
+      setTimeout(() => {
+        document.querySelector('.error-message').remove()
+      }, 4000);
       document.body.insertAdjacentElement('afterbegin', node);
     }
   };
