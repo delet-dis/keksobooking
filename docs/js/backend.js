@@ -4,19 +4,24 @@
   let SERVER_URL = 'https://javascript.pages.academy/keksobooking';
 
   let setup = function (onLoad, onError) {
+
     let xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
 
     xhr.addEventListener('load', function () {
+
       if (xhr.status === 200) {
         onLoad(xhr.response);
       } else {
         onError(xhr.response);
-      }
+      };
+
     });
+
     xhr.addEventListener('error', function () {
       onError('Произошла ошибка соединения');
     });
+
     xhr.addEventListener('timeout', function () {
       onError(`Запрос не успел выполниться за ${xhr.timeout} мс`)
     });
@@ -43,16 +48,21 @@
       let node = document.createElement('div');
       node.classList.add('error-message');
       node.textContent = '';
+
       for (let i = 0; i < errorMessage.length; i++) {
         node.innerText += errorMessage[i].fieldName + ' ' + errorMessage[i].errorMessage + ', ';
-      }
+      };
+
       node.textContent = node.textContent.replace(/^( *, *)+|(, *(?=,|$))+/g, '');
+
       if (!errorMessage) {
         node.textContent = 'Произошла ошибка';
       };
+
       setTimeout(() => {
         document.querySelector('.error-message').remove()
       }, 4000);
+
       document.body.insertAdjacentElement('afterbegin', node);
     }
   };

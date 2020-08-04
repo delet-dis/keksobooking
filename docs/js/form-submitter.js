@@ -7,16 +7,19 @@
   //слушатель отправки формы
   form.addEventListener('submit', function (evt) {
     window.backend.save(new FormData(form), function () {
+
       let node = document.createElement('div');
       node.classList.add('success-message');
       node.textContent = 'Данные успешно отправлены';
-      console.log(node);
       document.body.insertAdjacentElement('afterbegin', node);
+
       setTimeout(() => {
         document.querySelector('.success-message').remove()
       }, 4000);
+
       form.reset();
     }, window.backend.errorHandler);
+
     evt.preventDefault();
   });
 })()

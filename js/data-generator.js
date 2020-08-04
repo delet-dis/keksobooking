@@ -33,98 +33,98 @@
     return Math.floor(rand);
   }
 
-  function avatarGenerator() {
-    let avatarsArray = [];
-    for (let i = 1; i <= window.numberOfAds; i++) {
-      avatarsArray.push('img/avatars/user' + '0' + i + '.png')
-    }
+  // function avatarGenerator() {
+  //   let avatarsArray = [];
+  //   for (let i = 1; i <= window.numberOfAds; i++) {
+  //     avatarsArray.push('img/avatars/user' + '0' + i + '.png')
+  //   }
 
-    return getRandomPermutation(avatarsArray);
-  }
+  //   return getRandomPermutation(avatarsArray);
+  // }
 
-  function titleGenerator() {
-    let titlesArray = ['Большая уютная квартира', 'Маленькая неуютная квартира', 'Огромный прекрасный дворец', 'Маленький ужасный дворец', 'Красивый гостевой домик', 'Некрасивый негостеприимный домик', 'Уютное бунгало далеко от моря', 'Неуютное бунгало по колено в воде'];
-    return getRandomPermutation(titlesArray);
-  }
+  // function titleGenerator() {
+  //   let titlesArray = ['Большая уютная квартира', 'Маленькая неуютная квартира', 'Огромный прекрасный дворец', 'Маленький ужасный дворец', 'Красивый гостевой домик', 'Некрасивый негостеприимный домик', 'Уютное бунгало далеко от моря', 'Неуютное бунгало по колено в воде'];
+  //   return getRandomPermutation(titlesArray);
+  // }
 
-  function addressGenerator() {
-    let map = document.querySelector('.map__pinsoverlay');
-    let mapWidth = map.offsetWidth;
-    let addressArray = [];
-    for (let i = 0; i < window.numberOfAds; i++) {
-      addressArray.push(randomInteger(0, mapWidth).toString() + ', ' + randomInteger(130, 630).toString());
-    }
-    return addressArray;
-  }
+  // function addressGenerator() {
+  //   let map = document.querySelector('.map__pinsoverlay');
+  //   let mapWidth = map.offsetWidth;
+  //   let addressArray = [];
+  //   for (let i = 0; i < window.numberOfAds; i++) {
+  //     addressArray.push(randomInteger(0, mapWidth).toString() + ', ' + randomInteger(130, 630).toString());
+  //   }
+  //   return addressArray;
+  // }
 
-  function priceGenerator() {
-    let pricesArray = [];
-    for (let i = 0; i < window.numberOfAds; i++) {
-      pricesArray.push(Math.round(randomInteger(1000, 20000) / 1000000 * 1000000));
-    }
-    return pricesArray;
-  }
+  // function priceGenerator() {
+  //   let pricesArray = [];
+  //   for (let i = 0; i < window.numberOfAds; i++) {
+  //     pricesArray.push(Math.round(randomInteger(1000, 20000) / 1000000 * 1000000));
+  //   }
+  //   return pricesArray;
+  // }
 
-  function typeGenerator() {
-    let typesArray = [];
-    let types = ['palace', 'flat', 'house', 'bungalo'];
-    for (let i = 0; i < window.numberOfAds; i++) {
-      typesArray.push(arrayRandElement(types));
-    }
-    return typesArray;
-  }
+  // function typeGenerator() {
+  //   let typesArray = [];
+  //   let types = ['palace', 'flat', 'house', 'bungalo'];
+  //   for (let i = 0; i < window.numberOfAds; i++) {
+  //     typesArray.push(arrayRandElement(types));
+  //   }
+  //   return typesArray;
+  // }
 
-  function roomNumberGenerator() {
-    let roomsNumbersArray = [];
-    for (let i = 0; i < window.numberOfAds; i++) {
-      roomsNumbersArray.push(randomInteger(2, 4));
-    }
-    return roomsNumbersArray;
-  }
+  // function roomNumberGenerator() {
+  //   let roomsNumbersArray = [];
+  //   for (let i = 0; i < window.numberOfAds; i++) {
+  //     roomsNumbersArray.push(randomInteger(2, 4));
+  //   }
+  //   return roomsNumbersArray;
+  // }
 
-  function guestsNumberGenerator() {
-    let guestNumbersArray = [];
-    for (let i = 0; i < window.numberOfAds; i++) {
-      guestNumbersArray.push(randomInteger(3, 15));
-    }
-    return guestNumbersArray;
-  }
+  // function guestsNumberGenerator() {
+  //   let guestNumbersArray = [];
+  //   for (let i = 0; i < window.numberOfAds; i++) {
+  //     guestNumbersArray.push(randomInteger(3, 15));
+  //   }
+  //   return guestNumbersArray;
+  // }
 
-  function checkinTimeGenerator() {
-    let checkinsArray = [];
-    let checkins = ['12:00', '13:00', '14:00'];
-    for (let i = 0; i < window.numberOfAds; i++) {
-      checkinsArray.push(arrayRandElement(checkins));
-    }
-    return checkinsArray;
-  }
+  // function checkinTimeGenerator() {
+  //   let checkinsArray = [];
+  //   let checkins = ['12:00', '13:00', '14:00'];
+  //   for (let i = 0; i < window.numberOfAds; i++) {
+  //     checkinsArray.push(arrayRandElement(checkins));
+  //   }
+  //   return checkinsArray;
+  // }
 
-  function checkoutTimeGenerator() {
-    let checkoutsArray = [];
-    let checkouts = ['12:00', '13:00', '14:00'];
-    for (let i = 0; i < window.numberOfAds; i++) {
-      checkoutsArray.push(arrayRandElement(checkouts));
-    }
-    return checkoutsArray;
-  }
+  // function checkoutTimeGenerator() {
+  //   let checkoutsArray = [];
+  //   let checkouts = ['12:00', '13:00', '14:00'];
+  //   for (let i = 0; i < window.numberOfAds; i++) {
+  //     checkoutsArray.push(arrayRandElement(checkouts));
+  //   }
+  //   return checkoutsArray;
+  // }
 
-  function featuresGenerator() {
-    let featuresArray = [];
-    let features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
-    for (let i = 0; i < window.numberOfAds; i++) {
-      featuresArray[i] = arrayRandElement(features);
-    }
-    return featuresArray;
-  }
+  // function featuresGenerator() {
+  //   let featuresArray = [];
+  //   let features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+  //   for (let i = 0; i < window.numberOfAds; i++) {
+  //     featuresArray[i] = arrayRandElement(features);
+  //   }
+  //   return featuresArray;
+  // }
 
-  function picturesGenerator() {
-    let picturesArray = [];
-    let pictures = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
-    for (let i = 0; i < window.numberOfAds; i++) {
-      picturesArray.push(arrayRandElement(pictures));
-    }
-    return picturesArray;
-  }
+  // function picturesGenerator() {
+  //   let picturesArray = [];
+  //   let pictures = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
+  //   for (let i = 0; i < window.numberOfAds; i++) {
+  //     picturesArray.push(arrayRandElement(pictures));
+  //   }
+  //   return picturesArray;
+  // }
 
   //функция сборки всех сгенерированных данных в один массив
   function dataBuilder() {
@@ -198,7 +198,9 @@
   //функция преобразования features в блоки с классами
   let featuresAppender = function (arrayNonSorted) {
     let array = arrayNonSorted[0];
+
     let fragment = document.createDocumentFragment();
+
     array.forEach(function (elem) {
       let container = document.createElement('li');
       container.className = 'feature';
@@ -210,17 +212,21 @@
   };
   //функция преобразования images в блоки
   let imagesAppender = function (array) {
+
     let fragment = document.createDocumentFragment();
+
     array.forEach(function (elem) {
       let image = document.createElement('img');
       image.src = elem;
       fragment.appendChild(image);
     });
+
     return fragment;
   };
   //функция создания карточки объявления
   window.createCard = function (dataObj) {
     let mapCardAd = mapCardTemplate.content.querySelector('.map__card').cloneNode(true);
+
     mapCardAd.querySelector('.popup__title').textContent = dataObj.offer.title;
     mapCardAd.querySelector('.popup__text--address').textContent = dataObj.offer.address;
     mapCardAd.querySelector('.popup__text--price').textContent = dataObj.offer.price + '₽/ночь';
@@ -239,6 +245,8 @@
   }
 
   window.backend.load(function (ads) {
+
     window.dataResult = ads;
+
   });
 })()

@@ -45,14 +45,18 @@
     for (let i = 0; i < numberOfAds; i++) {
       createPin(window.dataResult[i]);
       createCard(window.dataResult[i]);
-    }
+    };
+
     const pins = document.querySelectorAll('.map__pin');
     const cards = document.querySelectorAll('.map__card');
+
     for (let i = 1; i < pins.length; i++) {
       pins[i].addEventListener('click', function () {
+
         cards.forEach((item) => {
           item.classList.add('hidden');
         })
+
         cards[i - 1].classList.remove('hidden');
       })
     }
@@ -60,14 +64,14 @@
     cards.forEach((item) => {
       item.addEventListener('click', function (evt) {
         const target = evt.target;
+
         if (target.closest('.popup__close')) {
           item.classList.add('hidden');
-        }
+        };
+
       });
     });
   }
-
-
 
   //дефолтные действия
   formFieldsets.forEach(element => element.disabled = true);
@@ -76,18 +80,22 @@
   //слушатель перемещения метки
   mapPinMain.addEventListener('mouseup', function (evt) {
     map.classList.remove('map--faded');
+
     document.querySelector('.notice__form').classList.remove('notice__form--disabled');
     formFieldsets.forEach(element => element.disabled = false);
+
     inputAddressFiller();
     displayPins();
   });
 
-
+  //слушатель изменения координат в адресе
   addressForm.addEventListener('input', () => {
+
     let coords = {
       x: addressForm.value.split(', ')[0],
       y: addressForm.value.split(', ')[1]
     };
+    
     window.mapPinMain.style.top = coords.x + 'px';
     window.mapPinMain.style.left = coords.y - 44 + 'px';
   })
