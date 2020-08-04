@@ -18,5 +18,5 @@
       form.reset();
     }, window.backend.errorHandler);
     evt.preventDefault();
-  });;
+  });
 })()
