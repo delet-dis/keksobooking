@@ -95,7 +95,7 @@
       x: addressForm.value.split(', ')[0],
       y: addressForm.value.split(', ')[1]
     };
-    
+
     window.mapPinMain.style.top = coords.x + 'px';
     window.mapPinMain.style.left = coords.y - 44 + 'px';
   })
