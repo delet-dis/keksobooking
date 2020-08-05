@@ -178,23 +178,14 @@
     mapPins.appendChild(pinElement);
   }
 
-  //функция перевода значений массива в типы жилищ
-  function typeTranslator(obj) {
-    switch (obj) {
-      case 'flat':
-        return 'Квартира'
-        break
-      case 'bungalo':
-        return 'Бунгало'
-        break
-      case 'house':
-        return 'Дом'
-        break
-      case 'palace':
-        return 'Дворец'
-        break
-    }
-  }
+  //объект со значениями для перевода
+  let typeTranslator = {
+    'flat': 'Квартира',
+    'bungalo': 'Бунгало',
+    'house': 'Дом',
+    'palace': 'Дворец'
+  };
+
   //функция преобразования features в блоки с классами
   let featuresAppender = function (arrayNonSorted) {
     let array = arrayNonSorted[0];
@@ -230,7 +221,7 @@
     mapCardAd.querySelector('.popup__title').textContent = dataObj.offer.title;
     mapCardAd.querySelector('.popup__text--address').textContent = dataObj.offer.address;
     mapCardAd.querySelector('.popup__text--price').textContent = dataObj.offer.price + '₽/ночь';
-    mapCardAd.querySelector('.popup__type').textContent = typeTranslator(dataObj.offer.type);
+    mapCardAd.querySelector('.popup__type').textContent = typeTranslator[dataObj.offer.type];
     mapCardAd.querySelector('.popup__text--capacity').textContent = dataObj.offer.rooms + ' комнаты для ' + dataObj.offer.guests + ' гостей';
     mapCardAd.querySelector('.popup__text--time').textContent = 'Заезд после ' + dataObj.offer.checkin + ', выезд до ' + dataObj.offer.checkout;
     mapCardAd.querySelector('.popup__features').innerHTML = '';
