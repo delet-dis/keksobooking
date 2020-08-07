@@ -20,7 +20,7 @@
     });
 
     xhr.addEventListener('error', function () {
-      onError('Произошла ошибка соединения');
+      onError(DEFAULT_ERROR_MESSAGE);
     });
 
     xhr.addEventListener('timeout', function () {
@@ -58,7 +58,7 @@
 
         node.textContent = node.textContent.replace(/^( *, *)+|(, *(?=,|$))+/g, '');
       } else {
-        node.textContent = DEFAULT_ERROR_MESSAGE;
+        node.textContent = errorMessage;
       }
 
       setTimeout(() => {
