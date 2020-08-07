@@ -2,6 +2,7 @@
 //функция получения и передачи данных
 (function () {
   let SERVER_URL = 'https://javascript.pages.academy/keksobooking';
+  let DEFAULT_ERROR_MESSAGE = 'Произошла ошибка соединения';
 
   let setup = function (onLoad, onError) {
 
@@ -47,17 +48,18 @@
     errorHandler: function (errorMessage) {
       let node = document.createElement('div');
       node.classList.add('error-message');
-      node.textContent = '';
 
-      for (let i = 0; i < errorMessage.length; i++) {
-        node.innerText += errorMessage[i].fieldName + ' ' + errorMessage[i].errorMessage + ', ';
-      };
+      if (errorMessage !== DEFAULT_ERROR_MESSAGE && errorMessage[0].errorMessage.startsWith('Запрос') === false) {
+        node.textContent = '';
 
-      node.textContent = node.textContent.replace(/^( *, *)+|(, *(?=,|$))+/g, '');
+        for (let i = 0; i < errorMessage.length; i++) {
+          node.innerText += errorMessage[i].fieldName + ' ' + errorMessage[i].errorMessage + ', ';
+        };
 
-      if (!errorMessage) {
-        node.textContent = 'Произошла ошибка';
-      };
+        node.textContent = node.textContent.replace(/^( *, *)+|(, *(?=,|$))+/g, '');
+      } else {
+        node.textContent = DEFAULT_ERROR_MESSAGE;
+      }
 
       setTimeout(() => {
         document.querySelector('.error-message').remove()
