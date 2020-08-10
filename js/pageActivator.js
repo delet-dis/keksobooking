@@ -81,9 +81,7 @@
   //дефолтные действия
   formFieldsets.forEach(element => element.disabled = true);
   inputAddressFiller();
-  mapFilters.forEach((item) => {
-    item.disabled = true;
-  })
+  mapFilters.forEach(element => element.disabled = true);
 
 
   //слушатель перемещения метки
@@ -92,9 +90,7 @@
 
     document.querySelector('.notice__form').classList.remove('notice__form--disabled');
     formFieldsets.forEach(element => element.disabled = false);
-    mapFilters.forEach((item) => {
-      item.disabled = false;
-    })
+    mapFilters.forEach(element => element.disabled = false);
 
     inputAddressFiller();
     displayPins();
