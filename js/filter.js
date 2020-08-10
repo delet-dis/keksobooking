@@ -10,8 +10,9 @@
     housingGuests = filtersContainer.querySelector('#housing-guests'),
     inputFilters = filtersContainer.querySelectorAll('input');
 
-  inputFilters.forEach((item)=>{
-    item.addEventListener('click', ()=>{
+  //проверка отмеченности инпута
+  inputFilters.forEach((item) => {
+    item.addEventListener('click', () => {
       console.log(item.checked);
     })
   })
