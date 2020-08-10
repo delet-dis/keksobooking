@@ -39,13 +39,17 @@
   function inputAddressFiller() {
     addressForm.value = getPinCoords().pinX.toString() + ', ' + getPinCoords().pinY.toString();
   }
+  //функция создания пинов от переданных значений
+  window.generatePins = function(data) {
+    data.forEach((item) => {
+      window.createCard(item);
+      window.createPin(item);
+    })
+  }
 
   //функция отрисовки пинов
   function displayPins() {
-    for (let i = 0; i < numberOfAds; i++) {
-      createPin(window.dataResult[i]);
-      createCard(window.dataResult[i]);
-    };
+    window.generatePins(window.dataResult);
 
     const pins = document.querySelectorAll('.map__pin');
     const cards = document.querySelectorAll('.map__card');
