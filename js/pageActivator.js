@@ -5,7 +5,8 @@
   const formFieldsets = document.querySelectorAll('fieldset'),
     map = document.querySelector('.map'),
     addressForm = document.querySelector('input[name=address]'),
-    pins = document.querySelectorAll('.map__pin');
+    pins = document.querySelectorAll('.map__pin'),
+    mapFilters = document.querySelectorAll('.map__filter');
   //константы
 
   //функция получения координат элемента относительно документа
@@ -40,7 +41,7 @@
     addressForm.value = getPinCoords().pinX.toString() + ', ' + getPinCoords().pinY.toString();
   }
   //функция создания пинов от переданных значений
-  window.generatePins = function(data) {
+  window.generatePins = function (data) {
     data.forEach((item) => {
       window.createCard(item);
       window.createPin(item);
@@ -80,6 +81,10 @@
   //дефолтные действия
   formFieldsets.forEach(element => element.disabled = true);
   inputAddressFiller();
+  mapFilters.forEach((item) => {
+    item.disabled = true;
+  })
+
 
   //слушатель перемещения метки
   mapPinMain.addEventListener('mouseup', function (evt) {
@@ -87,6 +92,9 @@
 
     document.querySelector('.notice__form').classList.remove('notice__form--disabled');
     formFieldsets.forEach(element => element.disabled = false);
+    mapFilters.forEach((item) => {
+      item.disabled = false;
+    })
 
     inputAddressFiller();
     displayPins();
