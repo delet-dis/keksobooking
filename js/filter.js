@@ -13,16 +13,20 @@
 
   const getFilterValue = (filter, value) => filter = value;
 
-  //слушатель изменения значения фильтров(select)
-  selectFilters.forEach((item) => {
-    item.addEventListener('change', (evt) => {
-      getFilterValue(item.value, evt.target.value);
-    });
-  })
-  //слушатель изменения значения фильтров(input)
-  inputFilters.forEach((item) => {
-    item.addEventListener('change', () => {
-      getFilterValue(item, item.checked);
+  //слушатель изменения значения фильтров
+  let filtersObject = {};
+  filtersContainer.addEventListener('click', () => {
+    selectFilters.forEach((item) => {
+      item.addEventListener('change', (evt) => {
+        let filterName = item.name;
+        filtersObject.filterName = item.value;
+      })
     })
-  })
+    console.log(filtersObject);
+  });
+
+  //функция обновления фильтров и применения их к данным
+  function updateFilters() {
+
+  }
 })()
