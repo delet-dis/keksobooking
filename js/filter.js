@@ -15,5 +15,28 @@
     item.addEventListener('click', () => {
       console.log(item.checked);
     })
-  })
+  });
+
+  //слушатель изменения значения фильтров
+  let filtersObject = {
+    type: undefined,
+    price: undefined,
+    rooms: undefined,
+    guests: undefined
+  };
+  filtersContainer.addEventListener('click', () => {
+    housingType.addEventListener('change', () => {
+      filtersObject.type = housingType.value;
+    });
+    housingPrice.addEventListener('change', () => {
+      filtersObject.price = housingPrice.value;
+    });
+    housingRooms.addEventListener('change', () => {
+      filtersObject.rooms = housingRooms.value;
+    });
+    housingGuests.addEventListener('change', () => {
+      filtersObject.guests = housingGuests.value;
+    });
+    
+  });
 })()
