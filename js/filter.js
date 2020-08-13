@@ -11,18 +11,33 @@
     inputFilters = filtersContainer.querySelectorAll('input'),
     selectFilters = filtersContainer.querySelectorAll('select');
 
-  const getFilterValue = (filter, value) => filter = value;
+  //проверка отмеченности инпута
+  inputFilters.forEach((item) => {
+    item.addEventListener('click', () => {
+      console.log(item.checked);
+    })
+  });
 
   //слушатель изменения значения фильтров
-  let filtersObject = {};
+  let filtersObject = {
+    type: undefined,
+    price: undefined,
+    rooms: undefined,
+    guests: undefined
+  };
   filtersContainer.addEventListener('click', () => {
-    selectFilters.forEach((item) => {
-      item.addEventListener('change', (evt) => {
-        let filterName = item.name;
-        filtersObject.filterName = item.value;
-      })
-    })
-    console.log(filtersObject);
+    housingType.addEventListener('change', () => {
+      filtersObject.type = housingType.value;
+    });
+    housingPrice.addEventListener('change', () => {
+      filtersObject.price = housingPrice.value;
+    });
+    housingRooms.addEventListener('change', () => {
+      filtersObject.rooms = housingRooms.value;
+    });
+    housingGuests.addEventListener('change', () => {
+      filtersObject.guests = housingGuests.value;
+    });
   });
 
   //функция обновления фильтров и применения их к данным
