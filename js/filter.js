@@ -1,47 +1,75 @@
 'use strict';
 
-//функция фильтрации объявлений
 (function () {
-  //объявление элементов
-  const filtersContainer = document.querySelector('.map__filters'),
-    housingType = filtersContainer.querySelector('#housing-type'),
-    housingPrice = filtersContainer.querySelector('#housing-price'),
-    housingRooms = filtersContainer.querySelector('#housing-rooms'),
-    housingGuests = filtersContainer.querySelector('#housing-guests'),
-    inputFilters = filtersContainer.querySelectorAll('input'),
-    selectFilters = filtersContainer.querySelectorAll('select');
+  const filtersBlock = document.querySelector('.map__filters'),
+    filterType = filtersBlock.querySelector('#housing-type'),
+    filterPrice = filtersBlock.querySelector('#housing-price'),
+    filterRooms = filtersBlock.querySelector('#housing-rooms'),
+    filterGuestsNumber = filtersBlock.querySelector('#housing-guests'),
+    selectFilters = filtersBlock.querySelectorAll('.map__filter'),
+    inputFilters = filtersBlock.querySelectorAll('.map__filter-set input');
 
-  //проверка отмеченности инпута
-  inputFilters.forEach((item) => {
-    item.addEventListener('click', () => {
-      console.log(item.checked);
-    })
-  });
+  let any = 'any';
+  let low = 'low';
+  let high = 'high';
+  let middle = 'middle';
 
-  //слушатель изменения значения фильтров
-  let filtersObject = {
-    type: undefined,
-    price: undefined,
-    rooms: undefined,
-    guests: undefined
+  let getCurrentFilterValue = function (filter, value) {
+    filter = value;
   };
-  filtersContainer.addEventListener('click', () => {
-    housingType.addEventListener('change', () => {
-      filtersObject.type = housingType.value;
-    });
-    housingPrice.addEventListener('change', () => {
-      filtersObject.price = housingPrice.value;
-    });
-    housingRooms.addEventListener('change', () => {
-      filtersObject.rooms = housingRooms.value;
-    });
-    housingGuests.addEventListener('change', () => {
-      filtersObject.guests = housingGuests.value;
+
+  selectFilters.forEach(function (elem) {
+    elem.addEventListener('change', function (evt) {
+      getCurrentFilterValue(elem.value, evt.target.value);
     });
   });
 
-  //функция обновления фильтров и применения их к данным
-  function updateFilters() {
+  inputFilters.forEach(function (elem) {
+    elem.addEventListener('change', function () {
+      getCurrentFilterValue(elem, elem.checked);
+    });
+  });
 
-  }
-})()
+  let filterAds = function (ad) {
+    let adOffer = ad.offer;
+    let adFeatures = adOffer.features;
+    let adPrice = adOffer.price;
+
+    for (let i = 0; i < selectFilters.length; i++) {
+      if (selectFilters[i] === filterType) {
+        if (selectFilters[i].value !== any && adOffer.type !== selectFilters[i].value) {
+          return false;
+        }
+      }
+      if (selectFilters[i] === filterPrice) {
+        if (selectFilters[i].value !== any &&
+          (selectFilters[i].value === low && adPrice >= window.utils.PRICE_LOW ||
+            selectFilters[i].value === middle && (adPrice <= window.utils.PRICE_LOW || adPrice >= window.utils.PRICE_MIDDLE) ||
+            selectFilters[i].value === high && adPrice <= window.utils.PRICE_MIDDLE)
+        ) {
+          return false;
+        }
+      }
+      if (selectFilters[i] === filterRooms || selectFilters[i] === filterGuestsNumber) {
+        if (selectFilters[i].value !== any && adOffer.guests !== selectFilters[i].value * 1) {
+          return false;
+        }
+      }
+    }
+
+    for (let j = 0; j < inputFilters.length; j++) {
+      if (inputFilters[j].checked === true && adFeatures.indexOf(inputFilters[j].value) === -1) {
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  window.updateOffers = function(){
+    let filterData = window.dataResult;
+    return filterData.filter(filterAds);
+  };
+
+  
+})();

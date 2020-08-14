@@ -50,7 +50,7 @@
 
   //функция отрисовки пинов
   function displayPins() {
-    window.generatePins(window.dataResult);
+    window.generatePins(window.updateOffers());
 
     const pins = document.querySelectorAll('.map__pin');
     const cards = document.querySelectorAll('.map__card');
