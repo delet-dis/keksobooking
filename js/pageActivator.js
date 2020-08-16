@@ -50,10 +50,14 @@
 
   //функция отрисовки пинов
   function displayPins() {
+
+    let pins = document.querySelectorAll('.map__pin');
+    let cards = document.querySelectorAll('.map__card');
+
     window.generatePins(window.updateOffers());
 
-    const pins = document.querySelectorAll('.map__pin');
-    const cards = document.querySelectorAll('.map__card');
+    pins = document.querySelectorAll('.map__pin');
+    cards = document.querySelectorAll('.map__card');
 
     for (let i = 1; i < pins.length; i++) {
       pins[i].addEventListener('click', function () {
@@ -62,6 +66,7 @@
           item.classList.add('hidden');
         })
 
+        console.log('click');
         cards[i - 1].classList.remove('hidden');
       })
     }

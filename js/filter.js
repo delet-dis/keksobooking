@@ -66,10 +66,22 @@
     return true;
   };
 
-  window.updateOffers = function(){
+  window.updateOffers = function () {
+
+    const pins = document.querySelectorAll('.map__pin');
+    const cards = document.querySelectorAll('.map__card');
+
+    for (let i = 1; i < pins.length; i++) {
+      pins[i].parentNode.removeChild(pins[i]);
+    }
+
+    cards.forEach((item) => {
+      item.parentNode.removeChild(item);
+    });
+
     let filterData = window.dataResult;
     return filterData.filter(filterAds);
   };
 
-  
+
 })();
