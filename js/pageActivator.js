@@ -5,8 +5,11 @@
   const formFieldsets = document.querySelectorAll('fieldset'),
     map = document.querySelector('.map'),
     addressForm = document.querySelector('input[name=address]'),
+    filtersBlock = document.querySelector('.map__filters'),
     pins = document.querySelectorAll('.map__pin'),
-    mapFilters = document.querySelectorAll('.map__filter');
+    mapFilters = document.querySelectorAll('.map__filter'),
+    selectFilters = filtersBlock.querySelectorAll('.map__filter'),
+    inputFilters = filtersBlock.querySelectorAll('.map__filter-set input');
   //константы
 
   //функция получения координат элемента относительно документа
@@ -49,7 +52,7 @@
   }
 
   //функция отрисовки пинов
-  function displayPins() {
+  window.displayPins = function () {
 
     let pins = document.querySelectorAll('.map__pin');
     let cards = document.querySelectorAll('.map__card');
@@ -98,7 +101,7 @@
     mapFilters.forEach(element => element.disabled = false);
 
     inputAddressFiller();
-    displayPins();
+    window.displayPins();
   });
 
   //слушатель изменения координат в адресе
@@ -111,5 +114,18 @@
 
     window.mapPinMain.style.top = coords.x + 'px';
     window.mapPinMain.style.left = coords.y - 44 + 'px';
-  })
+  });
+
+  selectFilters.forEach(function (elem) {
+    elem.addEventListener('change', function () {
+      window.displayPins();
+    });
+  });
+
+  inputFilters.forEach(function (elem) {
+    elem.addEventListener('change', function () {
+      window.displayPins();
+    });
+  });
+
 })();
