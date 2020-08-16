@@ -5,8 +5,11 @@
   const formFieldsets = document.querySelectorAll('fieldset'),
     map = document.querySelector('.map'),
     addressForm = document.querySelector('input[name=address]'),
+    filtersBlock = document.querySelector('.map__filters'),
     pins = document.querySelectorAll('.map__pin'),
-    mapFilters = document.querySelectorAll('.map__filter');
+    mapFilters = document.querySelectorAll('.map__filter'),
+    selectFilters = filtersBlock.querySelectorAll('.map__filter'),
+    inputFilters = filtersBlock.querySelectorAll('.map__filter-set input');
   //константы
 
   //функция получения координат элемента относительно документа
@@ -49,11 +52,15 @@
   }
 
   //функция отрисовки пинов
-  function displayPins() {
-    window.generatePins(window.dataResult);
+  window.displayPins = function () {
 
-    const pins = document.querySelectorAll('.map__pin');
-    const cards = document.querySelectorAll('.map__card');
+    let pins = document.querySelectorAll('.map__pin');
+    let cards = document.querySelectorAll('.map__card');
+
+    window.generatePins(window.updateOffers());
+
+    pins = document.querySelectorAll('.map__pin');
+    cards = document.querySelectorAll('.map__card');
 
     for (let i = 1; i < pins.length; i++) {
       pins[i].addEventListener('click', function () {
@@ -62,6 +69,7 @@
           item.classList.add('hidden');
         })
 
+        console.log('click');
         cards[i - 1].classList.remove('hidden');
       })
     }
@@ -81,9 +89,7 @@
   //дефолтные действия
   formFieldsets.forEach(element => element.disabled = true);
   inputAddressFiller();
-  mapFilters.forEach((item) => {
-    item.disabled = true;
-  })
+  mapFilters.forEach(element => element.disabled = true);
 
 
   //слушатель перемещения метки
@@ -92,12 +98,10 @@
 
     document.querySelector('.notice__form').classList.remove('notice__form--disabled');
     formFieldsets.forEach(element => element.disabled = false);
-    mapFilters.forEach((item) => {
-      item.disabled = false;
-    })
+    mapFilters.forEach(element => element.disabled = false);
 
     inputAddressFiller();
-    displayPins();
+    window.displayPins();
   });
 
   //слушатель изменения координат в адресе
@@ -110,5 +114,18 @@
 
     window.mapPinMain.style.top = coords.x + 'px';
     window.mapPinMain.style.left = coords.y - 44 + 'px';
-  })
+  });
+
+  selectFilters.forEach(function (elem) {
+    elem.addEventListener('change', function () {
+      window.displayPins();
+    });
+  });
+
+  inputFilters.forEach(function (elem) {
+    elem.addEventListener('change', function () {
+      window.displayPins();
+    });
+  });
+
 })();
