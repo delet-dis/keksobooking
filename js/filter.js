@@ -43,8 +43,8 @@
       }
       if (selectFilters[i] === filterPrice) {
         if (selectFilters[i].value !== any &&
-          (selectFilters[i].value === low && adPrice >= 10000||
-            selectFilters[i].value === middle && (adPrice <= 10000|| adPrice >= 50000) ||
+          (selectFilters[i].value === low && adPrice >= 10000 ||
+            selectFilters[i].value === middle && (adPrice <= 10000 || adPrice >= 50000) ||
             selectFilters[i].value === high && adPrice <= 50000)
         ) {
           return false;
