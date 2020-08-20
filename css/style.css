@@ -677,6 +677,7 @@ textarea:focus {
 
     box-sizing: border-box;
     height: 70px;
+    width: 135px;
     padding: 10px 10px 5px;
 
     text-align: center;
@@ -830,8 +831,15 @@ textarea:focus {
     border: 1px solid red !important;
 }
 
+.form__photo-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .ad-form__photo {
-    width: 250%;
     border: dashed 1px #c7c7c7;
     border-radius: 5px;
+    max-width: 100%;
+    margin-bottom: 10px;
 }

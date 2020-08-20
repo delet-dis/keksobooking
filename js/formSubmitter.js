@@ -2,7 +2,8 @@
 
 (function () {
   //поиск формы
-  const form = document.querySelector('.notice__form');
+  const form = document.querySelector('.notice__form'),
+    formReset = document.querySelector('.form__reset');
 
   //слушатель отправки формы
   form.addEventListener('submit', function (evt) {
@@ -22,4 +23,12 @@
 
     evt.preventDefault();
   });
+
+  formReset.addEventListener('click', () => {
+    let images = form.querySelectorAll('.ad-form__photo');
+    images.forEach((item) => {
+      item.parentNode.removeChild(item);
+    })
+    form.reset();
+  })
 })()
