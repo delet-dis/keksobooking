@@ -12,9 +12,7 @@
 
     let fileName = file.name.toLowerCase();
 
-    let matches = FILE_TYPES.some((item) => {
-      return fileName.endsWith(item);
-    });
+    let matches = FILE_TYPES.some(item => fileName.endsWith(item));
 
     if (matches) {
       let reader = new FileReader();
@@ -35,9 +33,7 @@
 
     let fileName = file.name.toLowerCase();
 
-    let matches = FILE_TYPES.some((item) => {
-      return fileName.endsWith(item);
-    });
+    let matches = FILE_TYPES.some(item => fileName.endsWith(item));
 
     if (matches) {
       let reader = new FileReader();
