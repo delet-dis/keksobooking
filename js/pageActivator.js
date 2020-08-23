@@ -1,5 +1,5 @@
 'use strict';
-(function () {
+( () => {
   //объявление переменных
   window.mapPinMain = document.querySelector('.map__pin--main');
   const formFieldsets = document.querySelectorAll('fieldset'),
@@ -52,7 +52,7 @@
   }
 
   //функция отрисовки пинов
-  window.displayPins = function () {
+  window.displayPins =  () => {
 
     let pins = document.querySelectorAll('.map__pin');
     let cards = document.querySelectorAll('.map__card');
@@ -63,7 +63,7 @@
     cards = document.querySelectorAll('.map__card');
 
     for (let i = 1; i < pins.length; i++) {
-      pins[i].addEventListener('click', function () {
+      pins[i].addEventListener('click',  () => {
 
         cards.forEach((item) => {
           item.classList.add('hidden');
@@ -117,13 +117,13 @@
   });
 
   selectFilters.forEach(function (elem) {
-    elem.addEventListener('change', function () {
+    elem.addEventListener('change',  () => {
       window.displayPins();
     });
   });
 
   inputFilters.forEach(function (elem) {
-    elem.addEventListener('change', function () {
+    elem.addEventListener('change',  () => {
       window.displayPins();
     });
   });

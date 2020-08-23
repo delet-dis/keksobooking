@@ -1,5 +1,5 @@
 'use strict';
-(function () {
+( () => {
   //слушатель перетаскивания пина
   mapPinMain.addEventListener('mousedown', (evt) => {
     evt.preventDefault();

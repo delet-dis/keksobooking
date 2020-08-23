@@ -1,6 +1,6 @@
 'use strict';
 
-(function () {
+( () => {
   const filtersBlock = document.querySelector('.map__filters'),
     filterType = filtersBlock.querySelector('#housing-type'),
     filterPrice = filtersBlock.querySelector('#housing-price'),
@@ -25,7 +25,7 @@
   });
 
   inputFilters.forEach(function (elem) {
-    elem.addEventListener('change', function () {
+    elem.addEventListener('change',  () => {
       getCurrentFilterValue(elem, elem.checked);
     });
   });
@@ -66,7 +66,7 @@
     return true;
   };
 
-  window.updateOffers = function () {
+  window.updateOffers =  () => {
 
     const pins = document.querySelectorAll('.map__pin');
     const cards = document.querySelectorAll('.map__card');

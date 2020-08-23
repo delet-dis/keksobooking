@@ -1,7 +1,7 @@
 'use strict';
 
-(function () {
-  window.formReset = function () {
+( () => {
+  window.formReset =  () => {
     //объявление формы и ее элементов
     const form = document.querySelector('.notice__form'),
       images = form.querySelectorAll('.ad-form__photo'),

@@ -1,13 +1,13 @@
 'use strict';
 
-(function () {
+( () => {
   //поиск формы
   const form = document.querySelector('.notice__form'),
     formReset = document.querySelector('.form__reset');
 
   //слушатель отправки формы
   form.addEventListener('submit', function (evt) {
-    window.backend.save(new FormData(form), function () {
+    window.backend.save(new FormData(form),  () => {
 
       let node = document.createElement('div');
       node.classList.add('success-message');

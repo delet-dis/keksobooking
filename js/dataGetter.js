@@ -1,5 +1,5 @@
 'use strict';
-(function () {
+( () => {
 
   //объявление тэмплэйтов
   const mapCardTemplate = document.querySelector('#map__card-template'),

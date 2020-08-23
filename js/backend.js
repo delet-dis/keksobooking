@@ -1,6 +1,6 @@
 'use strict';
 //функция получения и передачи данных
-(function () {
+( () => {
   let SERVER_URL = 'https://javascript.pages.academy/keksobooking';
   let DEFAULT_ERROR_MESSAGE = 'Произошла ошибка соединения';
 
