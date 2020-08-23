@@ -1,5 +1,5 @@
 'use strict';
-( () => {
+(() => {
 
   //объявление тэмплэйтов
   const mapCardTemplate = document.querySelector('#map__card-template'),
@@ -10,7 +10,7 @@
   window.numberOfAds = 8;
 
   //функция создания ДОМ-пин элемента
-  window.createPin = function (dataObj) {
+  window.createPin = dataObj => {
     let pinElement = pinTemplate.cloneNode(true);
     let pinElementImg = pinElement.querySelector('img');
     pinElement.style.left = dataObj.location.x + 'px';
@@ -21,7 +21,7 @@
   }
 
   //объект со значениями для перевода
-  let typeTranslator = {
+  const typeTranslator = {
     'flat': 'Квартира',
     'bungalo': 'Бунгало',
     'house': 'Дом',
@@ -29,12 +29,12 @@
   };
 
   //функция преобразования features в блоки с классами
-  let featuresAppender = function (arrayNonSorted) {
+  const featuresAppender = arrayNonSorted => {
     let array = arrayNonSorted[0];
 
     let fragment = document.createDocumentFragment();
 
-    array.forEach(function (elem) {
+    array.forEach(elem => {
       let container = document.createElement('li');
       container.className = 'feature';
       container.classList.add('feature--' + elem);
@@ -44,11 +44,11 @@
     return fragment;
   };
   //функция преобразования images в блоки
-  let imagesAppender = function (array) {
+  const imagesAppender = array => {
 
     let fragment = document.createDocumentFragment();
 
-    array.forEach(function (elem) {
+    array.forEach(elem => {
       let image = document.createElement('img');
       image.src = elem;
       fragment.appendChild(image);
@@ -57,7 +57,7 @@
     return fragment;
   };
   //функция создания карточки объявления
-  window.createCard = function (dataObj) {
+  window.createCard = dataObj => {
     let mapCardAd = mapCardTemplate.content.querySelector('.map__card').cloneNode(true);
 
     mapCardAd.querySelector('.popup__title').textContent = dataObj.offer.title;
@@ -77,9 +77,8 @@
     mapCardAd.classList.add('hidden');
   }
 
-  window.backend.load(function (ads) {
+  window.backend.load(ads => {
 
     window.dataResult = ads;
-
   });
 })()

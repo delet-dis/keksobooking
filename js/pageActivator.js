@@ -1,5 +1,5 @@
 'use strict';
-( () => {
+(() => {
   //объявление переменных
   window.mapPinMain = document.querySelector('.map__pin--main');
   const formFieldsets = document.querySelectorAll('fieldset'),
@@ -13,7 +13,7 @@
   //константы
 
   //функция получения координат элемента относительно документа
-  function getCoords(elem) {
+  const getCoords = elem => {
     let box = elem.getBoundingClientRect();
 
     return {
@@ -23,7 +23,7 @@
   }
 
   //функция высчитывания положения метки
-  function getPinCoords() {
+  const getPinCoords = () => {
     const MAP_PIN_WIDTH = mapPinMain.offsetWidth;
     const MAP_PIN_HEIGHT = mapPinMain.offsetHeight + 12;
 
@@ -40,11 +40,11 @@
   }
 
   //функция заполнения адреса в зависимости от положения метки
-  function inputAddressFiller() {
+  const inputAddressFiller = () => {
     addressForm.value = getPinCoords().pinX.toString() + ', ' + getPinCoords().pinY.toString();
   }
   //функция создания пинов от переданных значений
-  window.generatePins = function (data) {
+  window.generatePins = data => {
     data.forEach((item) => {
       window.createCard(item);
       window.createPin(item);
@@ -52,7 +52,7 @@
   }
 
   //функция отрисовки пинов
-  window.displayPins =  () => {
+  window.displayPins = () => {
 
     let pins = document.querySelectorAll('.map__pin');
     let cards = document.querySelectorAll('.map__card');
@@ -63,19 +63,18 @@
     cards = document.querySelectorAll('.map__card');
 
     for (let i = 1; i < pins.length; i++) {
-      pins[i].addEventListener('click',  () => {
+      pins[i].addEventListener('click', () => {
 
         cards.forEach((item) => {
           item.classList.add('hidden');
         })
 
-        console.log('click');
         cards[i - 1].classList.remove('hidden');
       })
     }
     //функция закрытия модалок
     cards.forEach((item) => {
-      item.addEventListener('click', function (evt) {
+      item.addEventListener('click', evt => {
         const target = evt.target;
 
         if (target.closest('.popup__close')) {
@@ -93,7 +92,7 @@
 
 
   //слушатель перемещения метки
-  mapPinMain.addEventListener('mouseup', function (evt) {
+  mapPinMain.addEventListener('mouseup', evt => {
     map.classList.remove('map--faded');
 
     document.querySelector('.notice__form').classList.remove('notice__form--disabled');
@@ -116,14 +115,14 @@
     window.mapPinMain.style.left = coords.y - 44 + 'px';
   });
 
-  selectFilters.forEach(function (elem) {
-    elem.addEventListener('change',  () => {
+  selectFilters.forEach(elem => {
+    elem.addEventListener('change', () => {
       window.displayPins();
     });
   });
 
-  inputFilters.forEach(function (elem) {
-    elem.addEventListener('change',  () => {
+  inputFilters.forEach(elem => {
+    elem.addEventListener('change', () => {
       window.displayPins();
     });
   });
