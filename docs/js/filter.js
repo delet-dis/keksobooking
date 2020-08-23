@@ -1,6 +1,6 @@
 'use strict';
 
-(function () {
+(() => {
   const filtersBlock = document.querySelector('.map__filters'),
     filterType = filtersBlock.querySelector('#housing-type'),
     filterPrice = filtersBlock.querySelector('#housing-price'),
@@ -9,28 +9,28 @@
     selectFilters = filtersBlock.querySelectorAll('.map__filter'),
     inputFilters = filtersBlock.querySelectorAll('.map__filter-set input');
 
-  let any = 'any';
-  let low = 'low';
-  let high = 'high';
-  let middle = 'middle';
+  const any = 'any',
+    low = 'low',
+    high = 'high',
+    middle = 'middle';
 
-  let getCurrentFilterValue = function (filter, value) {
+  const getCurrentFilterValue = (filter, value) => {
     filter = value;
   };
 
-  selectFilters.forEach(function (elem) {
-    elem.addEventListener('change', function (evt) {
+  selectFilters.forEach(elem => {
+    elem.addEventListener('change', evt => {
       getCurrentFilterValue(elem.value, evt.target.value);
     });
   });
 
-  inputFilters.forEach(function (elem) {
-    elem.addEventListener('change', function () {
+  inputFilters.forEach(elem => {
+    elem.addEventListener('change', () => {
       getCurrentFilterValue(elem, elem.checked);
     });
   });
 
-  let filterAds = function (ad) {
+  const filterAds = ad => {
     let adOffer = ad.offer;
     let adFeatures = adOffer.features;
     let adPrice = adOffer.price;
@@ -66,7 +66,7 @@
     return true;
   };
 
-  window.updateOffers = function () {
+  window.updateOffers = () => {
 
     const pins = document.querySelectorAll('.map__pin');
     const cards = document.querySelectorAll('.map__card');
@@ -75,7 +75,7 @@
       pins[i].parentNode.removeChild(pins[i]);
     }
 
-    cards.forEach((item) => {
+    cards.forEach(item => {
       item.parentNode.removeChild(item);
     });
 

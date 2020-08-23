@@ -1,6 +1,6 @@
 'use strict';
 
-(function () {
+(() => {
   const adAvatarPicker = document.querySelector('#avatar'),
     preview = document.querySelector('.notice__preview img');
 
