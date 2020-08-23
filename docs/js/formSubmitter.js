@@ -18,17 +18,15 @@
         document.querySelector('.success-message').remove()
       }, 4000);
 
-      form.reset();
+      window.formReset();
     }, window.backend.errorHandler);
 
     evt.preventDefault();
   });
 
   formReset.addEventListener('click', () => {
-    let images = form.querySelectorAll('.ad-form__photo');
-    images.forEach((item) => {
-      item.parentNode.removeChild(item);
-    })
-    form.reset();
+    
+
+    window.formReset();
   })
 })()
