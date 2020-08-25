@@ -1,30 +1,30 @@
 'use strict';
 (() => {
-  //слушатель перетаскивания пина
-  mapPinMain.addEventListener('mousedown', evt => {
+  // слушатель перетаскивания пина
+  mapPinMain.addEventListener('mousedown', (evt) => {
     evt.preventDefault();
 
     let startCoords = {
       x: evt.clientX,
-      y: evt.clientY
+      y: evt.clientY,
     };
 
-    //функция высчитывания координат
-    const onMouseMove = moveEvt => {
+    // функция высчитывания координат
+    const onMouseMove = (moveEvt) => {
       moveEvt.preventDefault();
-      let shift = {
+      const shift = {
         x: startCoords.x - moveEvt.clientX,
-        y: startCoords.y - moveEvt.clientY
+        y: startCoords.y - moveEvt.clientY,
       };
 
       startCoords = {
         x: moveEvt.clientX,
-        y: moveEvt.clientY
+        y: moveEvt.clientY,
       };
 
-      let styleChange = {
+      const styleChange = {
         top: mapPinMain.offsetTop - shift.y,
-        left: mapPinMain.offsetLeft - shift.x
+        left: mapPinMain.offsetLeft - shift.x,
       };
 
       if (styleChange.left > 0 &&
@@ -34,19 +34,17 @@
         mapPinMain.style.top = styleChange.top + 'px';
         mapPinMain.style.left = styleChange.left + 'px';
       };
-
     };
 
-    //функция отписки от обработчика события
-    const onMouseUp = upEvt => {
+    // функция отписки от обработчика события
+    const onMouseUp = (upEvt) => {
       upEvt.preventDefault();
 
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseup', onMouseUp);
-
     };
 
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
   });
-})()
+})();

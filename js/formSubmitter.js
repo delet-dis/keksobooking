@@ -1,21 +1,20 @@
 'use strict';
 
 (() => {
-  //поиск формы
-  const form = document.querySelector('.notice__form'),
-    formReset = document.querySelector('.form__reset');
+  // поиск формы
+  const form = document.querySelector('.notice__form');
+  const formReset = document.querySelector('.form__reset');
 
-  //слушатель отправки формы
-  form.addEventListener('submit', evt => {
+  // слушатель отправки формы
+  form.addEventListener('submit', (evt) => {
     window.backend.save(new FormData(form), () => {
-
-      let node = document.createElement('div');
+      const node = document.createElement('div');
       node.classList.add('success-message');
       node.textContent = 'Данные успешно отправлены';
       document.body.insertAdjacentElement('afterbegin', node);
 
       setTimeout(() => {
-        document.querySelector('.success-message').remove()
+        document.querySelector('.success-message').remove();
       }, 4000);
 
       window.formReset();
@@ -25,7 +24,6 @@
   });
 
   formReset.addEventListener('click', () => {
-
     window.formReset();
-  })
-})()
+  });
+})();
