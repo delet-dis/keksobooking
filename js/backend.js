@@ -13,7 +13,7 @@
         onLoad(xhr.response);
       } else {
         onError(xhr.response);
-      };
+      }
     });
 
     xhr.addEventListener('error', () => {
@@ -54,7 +54,7 @@
           node.innerText += errorMessage[i].fieldName +
             ' ' +
             errorMessage[i].errorMessage + ', ';
-        };
+        }
 
         node.textContent = node.textContent
             .replace(/^( *, *)+|(, *(?=,|$))+/g, '');

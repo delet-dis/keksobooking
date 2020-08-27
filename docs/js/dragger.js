@@ -1,7 +1,7 @@
 'use strict';
 (() => {
   // слушатель перетаскивания пина
-  mapPinMain.addEventListener('mousedown', (evt) => {
+  window.mapPinMain.addEventListener('mousedown', (evt) => {
     evt.preventDefault();
 
     let startCoords = {
@@ -23,17 +23,17 @@
       };
 
       const styleChange = {
-        top: mapPinMain.offsetTop - shift.y,
-        left: mapPinMain.offsetLeft - shift.x,
+        top: window.mapPinMain.offsetTop - shift.y,
+        left: window.mapPinMain.offsetLeft - shift.x,
       };
 
       if (styleChange.left > 0 &&
         styleChange.left < 1200 &&
         styleChange.top > 110 &&
         styleChange.top < 660) {
-        mapPinMain.style.top = styleChange.top + 'px';
-        mapPinMain.style.left = styleChange.left + 'px';
-      };
+        window.mapPinMain.style.top = styleChange.top + 'px';
+        window.mapPinMain.style.left = styleChange.left + 'px';
+      }
     };
 
     // функция отписки от обработчика события

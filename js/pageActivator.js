@@ -23,14 +23,14 @@
 
   // функция высчитывания положения метки
   const getPinCoords = () => {
-    const MAP_PIN_WIDTH = mapPinMain.offsetWidth;
-    const MAP_PIN_HEIGHT = mapPinMain.offsetHeight + 12;
+    const MAP_PIN_WIDTH = window.mapPinMain.offsetWidth;
+    const MAP_PIN_HEIGHT = window.mapPinMain.offsetHeight + 12;
 
     const MAP_X_COORD = getCoords(map).left;
     const MAP_Y_COORD = getCoords(map).top;
 
-    const PIN_X_COORD = getCoords(mapPinMain).left;
-    const PIN_Y_COORD = getCoords(mapPinMain).top;
+    const PIN_X_COORD = getCoords(window.mapPinMain).left;
+    const PIN_Y_COORD = getCoords(window.mapPinMain).top;
 
     return {
       pinX: Math.floor(PIN_X_COORD - MAP_X_COORD + MAP_PIN_WIDTH / 2),
@@ -77,7 +77,7 @@
 
         if (target.closest('.popup__close')) {
           item.classList.add('hidden');
-        };
+        }
       });
     });
   };
@@ -89,7 +89,7 @@
 
 
   // слушатель перемещения метки
-  mapPinMain.addEventListener('mouseup', (evt) => {
+  window.mapPinMain.addEventListener('mouseup', () => {
     map.classList.remove('map--faded');
 
     document.querySelector('.notice__form')
